@@ -1,5 +1,5 @@
 
--f git+git://github.com/timoniq/vkbottle.git
+-f git+https://github.com/timoniq/vkbottle.git
 vkbottle~=3.0
 aiohttp~=3.7.4
 loguru~=0.5.3
