@@ -2,3 +2,4 @@
 git+git://github.com/timoniq/vkbottle.git
 aiohttp~=3.7.4
 loguru~=0.5.3
+tortoise~=0.1.1
