@@ -1,4 +1,4 @@
 
-git+git://github.com/timoniq/vkbottle.git@3.0
+git+git://github.com/timoniq/vkbottle.git
 aiohttp~=3.7.4
 loguru~=0.5.3
