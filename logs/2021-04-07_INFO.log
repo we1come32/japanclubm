@@ -1,0 +1,3 @@
+2021-04-07 00:38:36.415 | INFO     | vkbottle.framework.bot.bot:run_forever:71 - Loop will be ran forever
+2021-04-07 00:38:36.454 | INFO     | vkbottle.framework.bot.bot:run_polling:60 - Starting polling for <API token_generator=<<class 'vkbottle.api.token_generator.single.SingleTokenGenerator'>>...>
+2021-04-07 00:41:43.992 | INFO     | vkbottle.tools.dev_tools.loop_wrapper:run_forever:51 - Keyboard Interrupt
