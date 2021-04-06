@@ -1,4 +1,4 @@
 
-vkbottle~=3.0
+vkbottle=https://github.com/timoniq/vkbottle/archive/master.zip
 aiohttp~=3.7.4
 loguru~=0.5.3
