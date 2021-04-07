@@ -1,1 +1,1 @@
-web: watchgod bot.py
+worker: python bot.py $PORT
