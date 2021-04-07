@@ -23,7 +23,7 @@ loop_wrapper.on_startup.append(on_startup())
 loop_wrapper.on_shutdown.append(on_shutdown())
 bot = Bot(settings.TOKEN, loop_wrapper=loop_wrapper)
 
-# Отключение
+# Отключение привязки к
 bot.labeler.vbml_ignore_case = True
 
 
@@ -35,6 +35,7 @@ menu = Category(name="menu", name_ru="Меню", color=KeyboardButtonColor.PRIMA
 
 # Создали первую категорию меню - Рассылка
 newsletter = Category(name="newsletter", name_ru="Управление рассылкой", color=KeyboardButtonColor.SECONDARY)
+# оздали вторую категорию меню - Статистика
 statistics = Category(name='statistic', name_ru="Статистика подписок", color=KeyboardButtonColor.SECONDARY,
                       allow=(lambda user: user.admin), action=StatisticAction)
 menu.add(newsletter)

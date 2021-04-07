@@ -1,1 +1,1 @@
-web: python bot.py
+web: watchgod bot.py
