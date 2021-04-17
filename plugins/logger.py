@@ -32,25 +32,24 @@ class LogFilter:
 
 # Logging with message in VKontakte
 async def log_handler(event: loguru._handler.Message):
-    if settings.DEBUG is False:
-        logFile = StringIO(event)
-        logFile.name = 'file.log'
-        api = API(token=settings.TOKEN)
-        server_url = await api.docs.get_messages_upload_server(type='doc', peer_id=settings.DEV_USER_ID)
-        async with aiohttp.ClientSession() as session:
-            async with session.post(server_url.upload_url, data={'file': logFile}) as response:
-                file = await response.json()
-        doc_information = await api.docs.save(file['file'], title='File', tags='logs,логи,лог,log')
-        message_id = await api.messages.send(
-            message=f"Кожаный ублюдок, ты долбаеб\n\nЛоги прикладываю:",
-            attachment=f"doc{doc_information.doc.owner_id}_{doc_information.doc.id}",
-            random_id=0,
-            peer_id=settings.DEV_USER_ID
-        )
-        try:
-            await api.messages.delete(message_ids=[message_id])
-        except vkbottle.VKAPIError:
-            pass
+    logFile = StringIO(event)
+    logFile.name = 'file.log'
+    api = API(token=settings.TOKEN)
+    server_url = await api.docs.get_messages_upload_server(type='doc', peer_id=settings.DEV_USER_ID)
+    async with aiohttp.ClientSession() as session:
+        async with session.post(server_url.upload_url, data={'file': logFile}) as response:
+            file = await response.json()
+    doc_information = await api.docs.save(file['file'], title='File', tags='logs,логи,лог,log')
+    message_id = await api.messages.send(
+        message=f"Кожаный ублюдок, ты долбаеб\n\nЛоги прикладываю:",
+        attachment=f"doc{doc_information.doc.owner_id}_{doc_information.doc.id}",
+        random_id=0,
+        peer_id=settings.DEV_USER_ID
+    )
+    try:
+        await api.messages.delete(message_ids=[message_id])
+    except vkbottle.VKAPIError:
+        pass
     return True
 
 logger.configure(
