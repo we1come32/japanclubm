@@ -31,4 +31,3 @@ async def animation():
 async def history():
     return await User.filter(history=True)
 
-
