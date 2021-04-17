@@ -1,0 +1,608 @@
+2021-04-17 21:23:42.798 | INFO     | vkbottle.framework.bot.bot:run_forever:71 - Loop will be ran forever
+2021-04-17 21:23:43.103 | INFO     | vkbottle.framework.bot.bot:run_polling:60 - Starting polling for <API token_generator=<<class 'vkbottle.api.token_generator.single.SingleTokenGenerator'>>...>
+2021-04-17 21:24:02.824 | ERROR    | vkbottle.dispatch.handlers.from_func_handler:handle:26 - An error has been caught in function 'handle', process 'MainProcess' (28504), thread 'MainThread' (23692):
+Traceback (most recent call last):
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\bot.py", line 130, in handle_message_event
+    message_ids=messages.items[0].id,
+                |        -> []
+                -> GetByConversationMessageIdResponseModel(count=0, items=[])
+
+IndexError: list index out of range
+
+
+During handling of the above exception, another exception occurred:
+
+
+Traceback (most recent call last):
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\bot.py", line 259, in <module>
+    bot.run_forever()
+    |   -> <function Bot.run_forever at 0x000001F762785670>
+    -> <vkbottle.framework.bot.bot.Bot object at 0x000001F75E514160>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\vkbottle\framework\bot\bot.py", line 73, in run_forever
+    self.loop_wrapper.run_forever(self.loop)
+    |    |            |           |    -> <property object at 0x000001F762784400>
+    |    |            |           -> <vkbottle.framework.bot.bot.Bot object at 0x000001F75E514160>
+    |    |            -> <function LoopWrapper.run_forever at 0x000001F7621E2E50>
+    |    -> <vkbottle.tools.dev_tools.loop_wrapper.LoopWrapper object at 0x000001F75E514B50>
+    -> <vkbottle.framework.bot.bot.Bot object at 0x000001F75E514160>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\vkbottle\tools\dev_tools\loop_wrapper.py", line 49, in run_forever
+    loop.run_forever()
+    |    -> <function ProactorEventLoop.run_forever at 0x000001F760508280>
+    -> <ProactorEventLoop running=True closed=False debug=False>
+
+  File "C:\Users\ilyak\AppData\Local\Programs\Python\Python39\lib\asyncio\windows_events.py", line 316, in run_forever
+    super().run_forever()
+
+  File "C:\Users\ilyak\AppData\Local\Programs\Python\Python39\lib\asyncio\base_events.py", line 596, in run_forever
+    self._run_once()
+    |    -> <function BaseEventLoop._run_once at 0x000001F76044C310>
+    -> <ProactorEventLoop running=True closed=False debug=False>
+
+  File "C:\Users\ilyak\AppData\Local\Programs\Python\Python39\lib\asyncio\base_events.py", line 1890, in _run_once
+    handle._run()
+    |      -> <function Handle._run at 0x000001F7603A0700>
+    -> <Handle <TaskWakeupMethWrapper object at 0x000001F762D9A3D0>(<Future finished result=None>)>
+
+  File "C:\Users\ilyak\AppData\Local\Programs\Python\Python39\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    |    |            |    |           |    -> <member '_args' of 'Handle' objects>
+    |    |            |    |           -> <Handle <TaskWakeupMethWrapper object at 0x000001F762D9A3D0>(<Future finished result=None>)>
+    |    |            |    -> <member '_callback' of 'Handle' objects>
+    |    |            -> <Handle <TaskWakeupMethWrapper object at 0x000001F762D9A3D0>(<Future finished result=None>)>
+    |    -> <member '_context' of 'Handle' objects>
+    -> <Handle <TaskWakeupMethWrapper object at 0x000001F762D9A3D0>(<Future finished result=None>)>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\vkbottle\framework\bot\bot.py", line 66, in run_polling
+    await self.router.route(update, polling.api)
+          |    |            |       |       -> <property object at 0x000001F762734D10>
+          |    |            |       -> <vkbottle.polling.bot_polling.BotPolling object at 0x000001F762AC4940>
+          |    |            -> {'type': 'message_event', 'object': {'user_id': 367833544, 'peer_id': 367833544, 'event_id': '72c33f64a7c9', 'payload': {'cmd...
+          |    -> <property object at 0x000001F762784360>
+          -> <vkbottle.framework.bot.bot.Bot object at 0x000001F75E514160>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\vkbottle\dispatch\bot_router.py", line 20, in route
+    await view.handle_event(event, ctx_api, self.state_dispenser)
+          |    |            |      |        |    -> <vkbottle.dispatch.dispenser.builtin.BuiltinStateDispenser object at 0x000001F762AC4F70>
+          |    |            |      |        -> <vkbottle.dispatch.bot_router.BotRouter object at 0x000001F762AC4850>
+          |    |            |      -> <API token_generator=<<class 'vkbottle.api.token_generator.single.SingleTokenGenerator'>>...>
+          |    |            -> {'type': 'message_event', 'object': {'user_id': 367833544, 'peer_id': 367833544, 'event_id': '72c33f64a7c9', 'payload': {'cmd...
+          |    -> <function RawEventView.handle_event at 0x000001F76271B040>
+          -> <RawEventView handlers={<GroupEventType.WALL_POST_NEW: 'wall_post_new'>: HandlerBasement(dataclass=<class 'vkbottle_types.eve...
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\vkbottle\dispatch\views\bot\raw.py", line 60, in handle_event
+    handler_response = await handler_basement.handler.handle(event_model, **context_variables)
+                             |                |              |              -> {}
+                             |                |              -> MessageEvent(type=<GroupEventType.MESSAGE_EVENT: 'message_event'>, object=MessageEventObject(state_peer=None, user_id=3678335...
+                             |                -> _tuplegetter(1, 'Alias for field number 1')
+                             -> HandlerBasement(dataclass=<class 'vkbottle_types.events.bot_events.MessageEvent'>, handler=<FromFuncHandler handle_message_ev...
+
+> File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\vkbottle\dispatch\handlers\from_func_handler.py", line 26, in handle
+    return await self.handler(event, **context)
+                 |    |       |        -> {}
+                 |    |       -> MessageEvent(type=<GroupEventType.MESSAGE_EVENT: 'message_event'>, object=MessageEventObject(state_peer=None, user_id=3678335...
+                 |    -> <function handle_message_event at 0x000001F762BBE670>
+                 -> <FromFuncHandler handle_message_event blocking=True rules=()>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\bot.py", line 133, in handle_message_event
+    except VKAPIError:
+           -> CodeErrorFactory()
+
+TypeError: catching classes that do not inherit from BaseException is not allowed
+2021-04-17 21:25:20.512 | ERROR    | vkbottle.dispatch.handlers.from_func_handler:handle:26 - An error has been caught in function 'handle', process 'MainProcess' (28504), thread 'MainThread' (23692):
+Traceback (most recent call last):
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\bot.py", line 259, in <module>
+    bot.run_forever()
+    |   -> <function Bot.run_forever at 0x000001F762785670>
+    -> <vkbottle.framework.bot.bot.Bot object at 0x000001F75E514160>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\vkbottle\framework\bot\bot.py", line 73, in run_forever
+    self.loop_wrapper.run_forever(self.loop)
+    |    |            |           |    -> <property object at 0x000001F762784400>
+    |    |            |           -> <vkbottle.framework.bot.bot.Bot object at 0x000001F75E514160>
+    |    |            -> <function LoopWrapper.run_forever at 0x000001F7621E2E50>
+    |    -> <vkbottle.tools.dev_tools.loop_wrapper.LoopWrapper object at 0x000001F75E514B50>
+    -> <vkbottle.framework.bot.bot.Bot object at 0x000001F75E514160>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\vkbottle\tools\dev_tools\loop_wrapper.py", line 49, in run_forever
+    loop.run_forever()
+    |    -> <function ProactorEventLoop.run_forever at 0x000001F760508280>
+    -> <ProactorEventLoop running=True closed=False debug=False>
+
+  File "C:\Users\ilyak\AppData\Local\Programs\Python\Python39\lib\asyncio\windows_events.py", line 316, in run_forever
+    super().run_forever()
+
+  File "C:\Users\ilyak\AppData\Local\Programs\Python\Python39\lib\asyncio\base_events.py", line 596, in run_forever
+    self._run_once()
+    |    -> <function BaseEventLoop._run_once at 0x000001F76044C310>
+    -> <ProactorEventLoop running=True closed=False debug=False>
+
+  File "C:\Users\ilyak\AppData\Local\Programs\Python\Python39\lib\asyncio\base_events.py", line 1890, in _run_once
+    handle._run()
+    |      -> <function Handle._run at 0x000001F7603A0700>
+    -> <Handle <TaskWakeupMethWrapper object at 0x000001F762D8AB80>(<Future finished result=None>)>
+
+  File "C:\Users\ilyak\AppData\Local\Programs\Python\Python39\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    |    |            |    |           |    -> <member '_args' of 'Handle' objects>
+    |    |            |    |           -> <Handle <TaskWakeupMethWrapper object at 0x000001F762D8AB80>(<Future finished result=None>)>
+    |    |            |    -> <member '_callback' of 'Handle' objects>
+    |    |            -> <Handle <TaskWakeupMethWrapper object at 0x000001F762D8AB80>(<Future finished result=None>)>
+    |    -> <member '_context' of 'Handle' objects>
+    -> <Handle <TaskWakeupMethWrapper object at 0x000001F762D8AB80>(<Future finished result=None>)>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\vkbottle\framework\bot\bot.py", line 66, in run_polling
+    await self.router.route(update, polling.api)
+          |    |            |       |       -> <property object at 0x000001F762734D10>
+          |    |            |       -> <vkbottle.polling.bot_polling.BotPolling object at 0x000001F762AC4940>
+          |    |            -> {'type': 'wall_post_new', 'object': {'id': 29, 'from_id': 367833544, 'owner_id': -199561502, 'date': 1618683978, 'marked_as_a...
+          |    -> <property object at 0x000001F762784360>
+          -> <vkbottle.framework.bot.bot.Bot object at 0x000001F75E514160>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\vkbottle\dispatch\bot_router.py", line 20, in route
+    await view.handle_event(event, ctx_api, self.state_dispenser)
+          |    |            |      |        |    -> <vkbottle.dispatch.dispenser.builtin.BuiltinStateDispenser object at 0x000001F762AC4F70>
+          |    |            |      |        -> <vkbottle.dispatch.bot_router.BotRouter object at 0x000001F762AC4850>
+          |    |            |      -> <API token_generator=<<class 'vkbottle.api.token_generator.single.SingleTokenGenerator'>>...>
+          |    |            -> {'type': 'wall_post_new', 'object': {'id': 29, 'from_id': 367833544, 'owner_id': -199561502, 'date': 1618683978, 'marked_as_a...
+          |    -> <function RawEventView.handle_event at 0x000001F76271B040>
+          -> <RawEventView handlers={<GroupEventType.WALL_POST_NEW: 'wall_post_new'>: HandlerBasement(dataclass=<class 'vkbottle_types.eve...
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\vkbottle\dispatch\views\bot\raw.py", line 60, in handle_event
+    handler_response = await handler_basement.handler.handle(event_model, **context_variables)
+                             |                |              |              -> {}
+                             |                |              -> WallPostNew(type=<GroupEventType.WALL_POST_NEW: 'wall_post_new'>, object=WallPostNewObject(access_key=None, attachments=None,...
+                             |                -> _tuplegetter(1, 'Alias for field number 1')
+                             -> HandlerBasement(dataclass=<class 'vkbottle_types.events.bot_events.WallPostNew'>, handler=<FromFuncHandler wall_post_new_hand...
+
+> File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\vkbottle\dispatch\handlers\from_func_handler.py", line 26, in handle
+    return await self.handler(event, **context)
+                 |    |       |        -> {}
+                 |    |       -> WallPostNew(type=<GroupEventType.WALL_POST_NEW: 'wall_post_new'>, object=WallPostNewObject(access_key=None, attachments=None,...
+                 |    -> <function wall_post_new_handler at 0x000001F762BBE310>
+                 -> <FromFuncHandler wall_post_new_handler blocking=True rules=()>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\bot.py", line 80, in wall_post_new_handler
+    users += await post_handler['action']()
+    |              -> {'name': '#stream@japanclubm', 'action': <function stream at 0x000001F762BBE040>, 'short_name': 'stream'}
+    -> []
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\plugins\posts\__init__.py", line 17, in stream
+    return await User.filter(stream=True)
+                 |    -> <classmethod object at 0x000001F762A74B80>
+                 -> <class 'plugins.database.User'>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\tortoise\queryset.py", line 828, in __await__
+    self._make_query()
+    |    -> <function QuerySet._make_query at 0x000001F762A6DE50>
+    -> <tortoise.queryset.QuerySet object at 0x000001F762A5CE40>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\tortoise\queryset.py", line 797, in _make_query
+    self.resolve_filters(
+    |    -> <function AwaitableQuery.resolve_filters at 0x000001F762A659D0>
+    -> <tortoise.queryset.QuerySet object at 0x000001F762A5CE40>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\tortoise\queryset.py", line 126, in resolve_filters
+    modifier &= node.resolve(model, annotations, custom_filters, model._meta.basetable)
+    |           |    |       |      |            |               |     |     -> <member 'basetable' of 'MetaInfo' objects>
+    |           |    |       |      |            |               |     -> <tortoise.models.MetaInfo object at 0x000001F762A45A40>
+    |           |    |       |      |            |               -> <class 'plugins.database.User'>
+    |           |    |       |      |            -> {}
+    |           |    |       |      -> {}
+    |           |    |       -> <class 'plugins.database.User'>
+    |           |    -> <function Q.resolve at 0x000001F762A18DC0>
+    |           -> <tortoise.query_utils.Q object at 0x000001F762E05BD0>
+    -> <tortoise.query_utils.QueryModifier object at 0x000001F762AD02E0>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\tortoise\query_utils.py", line 386, in resolve
+    return self._resolve_kwargs(model, table)
+           |    |               |      -> Table('user')
+           |    |               -> <class 'plugins.database.User'>
+           |    -> <function Q._resolve_kwargs at 0x000001F762A18CA0>
+           -> <tortoise.query_utils.Q object at 0x000001F762E05BD0>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\tortoise\query_utils.py", line 340, in _resolve_kwargs
+    key, value = self._get_actual_filter_params(model, raw_key, raw_value)
+                 |    |                         |      |        -> True
+                 |    |                         |      -> 'stream'
+                 |    |                         -> <class 'plugins.database.User'>
+                 |    -> <function Q._get_actual_filter_params at 0x000001F762A18C10>
+                 -> <tortoise.query_utils.Q object at 0x000001F762E05BD0>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\tortoise\query_utils.py", line 334, in _get_actual_filter_params
+    raise FieldError(f"Unknown filter param '{key}'. Allowed base values are {allowed}")
+          -> <class 'tortoise.exceptions.FieldError'>
+
+tortoise.exceptions.FieldError: Unknown filter param 'stream'. Allowed base values are ['admin', 'animation', 'articles', 'history', 'id', 'last_message', 'manga', 'news', 'streams', 'user_id']
+2021-04-17 21:25:44.558 | ERROR    | vkbottle.dispatch.handlers.from_func_handler:handle:26 - An error has been caught in function 'handle', process 'MainProcess' (28504), thread 'MainThread' (23692):
+Traceback (most recent call last):
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\bot.py", line 259, in <module>
+    bot.run_forever()
+    |   -> <function Bot.run_forever at 0x000001F762785670>
+    -> <vkbottle.framework.bot.bot.Bot object at 0x000001F75E514160>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\vkbottle\framework\bot\bot.py", line 73, in run_forever
+    self.loop_wrapper.run_forever(self.loop)
+    |    |            |           |    -> <property object at 0x000001F762784400>
+    |    |            |           -> <vkbottle.framework.bot.bot.Bot object at 0x000001F75E514160>
+    |    |            -> <function LoopWrapper.run_forever at 0x000001F7621E2E50>
+    |    -> <vkbottle.tools.dev_tools.loop_wrapper.LoopWrapper object at 0x000001F75E514B50>
+    -> <vkbottle.framework.bot.bot.Bot object at 0x000001F75E514160>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\vkbottle\tools\dev_tools\loop_wrapper.py", line 49, in run_forever
+    loop.run_forever()
+    |    -> <function ProactorEventLoop.run_forever at 0x000001F760508280>
+    -> <ProactorEventLoop running=True closed=False debug=False>
+
+  File "C:\Users\ilyak\AppData\Local\Programs\Python\Python39\lib\asyncio\windows_events.py", line 316, in run_forever
+    super().run_forever()
+
+  File "C:\Users\ilyak\AppData\Local\Programs\Python\Python39\lib\asyncio\base_events.py", line 596, in run_forever
+    self._run_once()
+    |    -> <function BaseEventLoop._run_once at 0x000001F76044C310>
+    -> <ProactorEventLoop running=True closed=False debug=False>
+
+  File "C:\Users\ilyak\AppData\Local\Programs\Python\Python39\lib\asyncio\base_events.py", line 1890, in _run_once
+    handle._run()
+    |      -> <function Handle._run at 0x000001F7603A0700>
+    -> <Handle <TaskWakeupMethWrapper object at 0x000001F762D9D760>(<Future finished result=None>)>
+
+  File "C:\Users\ilyak\AppData\Local\Programs\Python\Python39\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    |    |            |    |           |    -> <member '_args' of 'Handle' objects>
+    |    |            |    |           -> <Handle <TaskWakeupMethWrapper object at 0x000001F762D9D760>(<Future finished result=None>)>
+    |    |            |    -> <member '_callback' of 'Handle' objects>
+    |    |            -> <Handle <TaskWakeupMethWrapper object at 0x000001F762D9D760>(<Future finished result=None>)>
+    |    -> <member '_context' of 'Handle' objects>
+    -> <Handle <TaskWakeupMethWrapper object at 0x000001F762D9D760>(<Future finished result=None>)>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\vkbottle\framework\bot\bot.py", line 66, in run_polling
+    await self.router.route(update, polling.api)
+          |    |            |       |       -> <property object at 0x000001F762734D10>
+          |    |            |       -> <vkbottle.polling.bot_polling.BotPolling object at 0x000001F762AC4940>
+          |    |            -> {'type': 'wall_post_new', 'object': {'id': 30, 'from_id': 367833544, 'owner_id': -199561502, 'date': 1618684002, 'marked_as_a...
+          |    -> <property object at 0x000001F762784360>
+          -> <vkbottle.framework.bot.bot.Bot object at 0x000001F75E514160>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\vkbottle\dispatch\bot_router.py", line 20, in route
+    await view.handle_event(event, ctx_api, self.state_dispenser)
+          |    |            |      |        |    -> <vkbottle.dispatch.dispenser.builtin.BuiltinStateDispenser object at 0x000001F762AC4F70>
+          |    |            |      |        -> <vkbottle.dispatch.bot_router.BotRouter object at 0x000001F762AC4850>
+          |    |            |      -> <API token_generator=<<class 'vkbottle.api.token_generator.single.SingleTokenGenerator'>>...>
+          |    |            -> {'type': 'wall_post_new', 'object': {'id': 30, 'from_id': 367833544, 'owner_id': -199561502, 'date': 1618684002, 'marked_as_a...
+          |    -> <function RawEventView.handle_event at 0x000001F76271B040>
+          -> <RawEventView handlers={<GroupEventType.WALL_POST_NEW: 'wall_post_new'>: HandlerBasement(dataclass=<class 'vkbottle_types.eve...
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\vkbottle\dispatch\views\bot\raw.py", line 60, in handle_event
+    handler_response = await handler_basement.handler.handle(event_model, **context_variables)
+                             |                |              |              -> {}
+                             |                |              -> WallPostNew(type=<GroupEventType.WALL_POST_NEW: 'wall_post_new'>, object=WallPostNewObject(access_key=None, attachments=None,...
+                             |                -> _tuplegetter(1, 'Alias for field number 1')
+                             -> HandlerBasement(dataclass=<class 'vkbottle_types.events.bot_events.WallPostNew'>, handler=<FromFuncHandler wall_post_new_hand...
+
+> File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\vkbottle\dispatch\handlers\from_func_handler.py", line 26, in handle
+    return await self.handler(event, **context)
+                 |    |       |        -> {}
+                 |    |       -> WallPostNew(type=<GroupEventType.WALL_POST_NEW: 'wall_post_new'>, object=WallPostNewObject(access_key=None, attachments=None,...
+                 |    -> <function wall_post_new_handler at 0x000001F762BBE310>
+                 -> <FromFuncHandler wall_post_new_handler blocking=True rules=()>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\bot.py", line 80, in wall_post_new_handler
+    users += await post_handler['action']()
+    |              -> {'name': '#stream@japanclubm', 'action': <function stream at 0x000001F762BBE040>, 'short_name': 'stream'}
+    -> []
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\plugins\posts\__init__.py", line 17, in stream
+    return await User.filter(stream=True)
+                 |    -> <classmethod object at 0x000001F762A74B80>
+                 -> <class 'plugins.database.User'>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\tortoise\queryset.py", line 828, in __await__
+    self._make_query()
+    |    -> <function QuerySet._make_query at 0x000001F762A6DE50>
+    -> <tortoise.queryset.QuerySet object at 0x000001F762A5C740>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\tortoise\queryset.py", line 797, in _make_query
+    self.resolve_filters(
+    |    -> <function AwaitableQuery.resolve_filters at 0x000001F762A659D0>
+    -> <tortoise.queryset.QuerySet object at 0x000001F762A5C740>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\tortoise\queryset.py", line 126, in resolve_filters
+    modifier &= node.resolve(model, annotations, custom_filters, model._meta.basetable)
+    |           |    |       |      |            |               |     |     -> <member 'basetable' of 'MetaInfo' objects>
+    |           |    |       |      |            |               |     -> <tortoise.models.MetaInfo object at 0x000001F762A45A40>
+    |           |    |       |      |            |               -> <class 'plugins.database.User'>
+    |           |    |       |      |            -> {}
+    |           |    |       |      -> {}
+    |           |    |       -> <class 'plugins.database.User'>
+    |           |    -> <function Q.resolve at 0x000001F762A18DC0>
+    |           -> <tortoise.query_utils.Q object at 0x000001F762E049A0>
+    -> <tortoise.query_utils.QueryModifier object at 0x000001F762D959D0>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\tortoise\query_utils.py", line 386, in resolve
+    return self._resolve_kwargs(model, table)
+           |    |               |      -> Table('user')
+           |    |               -> <class 'plugins.database.User'>
+           |    -> <function Q._resolve_kwargs at 0x000001F762A18CA0>
+           -> <tortoise.query_utils.Q object at 0x000001F762E049A0>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\tortoise\query_utils.py", line 340, in _resolve_kwargs
+    key, value = self._get_actual_filter_params(model, raw_key, raw_value)
+                 |    |                         |      |        -> True
+                 |    |                         |      -> 'stream'
+                 |    |                         -> <class 'plugins.database.User'>
+                 |    -> <function Q._get_actual_filter_params at 0x000001F762A18C10>
+                 -> <tortoise.query_utils.Q object at 0x000001F762E049A0>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\tortoise\query_utils.py", line 334, in _get_actual_filter_params
+    raise FieldError(f"Unknown filter param '{key}'. Allowed base values are {allowed}")
+          -> <class 'tortoise.exceptions.FieldError'>
+
+tortoise.exceptions.FieldError: Unknown filter param 'stream'. Allowed base values are ['admin', 'animation', 'articles', 'history', 'id', 'last_message', 'manga', 'news', 'streams', 'user_id']
+2021-04-17 21:29:23.951 | ERROR    | vkbottle.dispatch.handlers.from_func_handler:handle:26 - An error has been caught in function 'handle', process 'MainProcess' (28504), thread 'MainThread' (23692):
+Traceback (most recent call last):
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\bot.py", line 259, in <module>
+    bot.run_forever()
+    |   -> <function Bot.run_forever at 0x000001F762785670>
+    -> <vkbottle.framework.bot.bot.Bot object at 0x000001F75E514160>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\vkbottle\framework\bot\bot.py", line 73, in run_forever
+    self.loop_wrapper.run_forever(self.loop)
+    |    |            |           |    -> <property object at 0x000001F762784400>
+    |    |            |           -> <vkbottle.framework.bot.bot.Bot object at 0x000001F75E514160>
+    |    |            -> <function LoopWrapper.run_forever at 0x000001F7621E2E50>
+    |    -> <vkbottle.tools.dev_tools.loop_wrapper.LoopWrapper object at 0x000001F75E514B50>
+    -> <vkbottle.framework.bot.bot.Bot object at 0x000001F75E514160>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\vkbottle\tools\dev_tools\loop_wrapper.py", line 49, in run_forever
+    loop.run_forever()
+    |    -> <function ProactorEventLoop.run_forever at 0x000001F760508280>
+    -> <ProactorEventLoop running=True closed=False debug=False>
+
+  File "C:\Users\ilyak\AppData\Local\Programs\Python\Python39\lib\asyncio\windows_events.py", line 316, in run_forever
+    super().run_forever()
+
+  File "C:\Users\ilyak\AppData\Local\Programs\Python\Python39\lib\asyncio\base_events.py", line 596, in run_forever
+    self._run_once()
+    |    -> <function BaseEventLoop._run_once at 0x000001F76044C310>
+    -> <ProactorEventLoop running=True closed=False debug=False>
+
+  File "C:\Users\ilyak\AppData\Local\Programs\Python\Python39\lib\asyncio\base_events.py", line 1890, in _run_once
+    handle._run()
+    |      -> <function Handle._run at 0x000001F7603A0700>
+    -> <Handle <TaskWakeupMethWrapper object at 0x000001F762D9D3D0>(<Future finished result=None>)>
+
+  File "C:\Users\ilyak\AppData\Local\Programs\Python\Python39\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    |    |            |    |           |    -> <member '_args' of 'Handle' objects>
+    |    |            |    |           -> <Handle <TaskWakeupMethWrapper object at 0x000001F762D9D3D0>(<Future finished result=None>)>
+    |    |            |    -> <member '_callback' of 'Handle' objects>
+    |    |            -> <Handle <TaskWakeupMethWrapper object at 0x000001F762D9D3D0>(<Future finished result=None>)>
+    |    -> <member '_context' of 'Handle' objects>
+    -> <Handle <TaskWakeupMethWrapper object at 0x000001F762D9D3D0>(<Future finished result=None>)>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\vkbottle\framework\bot\bot.py", line 66, in run_polling
+    await self.router.route(update, polling.api)
+          |    |            |       |       -> <property object at 0x000001F762734D10>
+          |    |            |       -> <vkbottle.polling.bot_polling.BotPolling object at 0x000001F762AC4940>
+          |    |            -> {'type': 'wall_post_new', 'object': {'id': 32, 'from_id': 367833544, 'owner_id': -199561502, 'date': 1618684222, 'marked_as_a...
+          |    -> <property object at 0x000001F762784360>
+          -> <vkbottle.framework.bot.bot.Bot object at 0x000001F75E514160>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\vkbottle\dispatch\bot_router.py", line 20, in route
+    await view.handle_event(event, ctx_api, self.state_dispenser)
+          |    |            |      |        |    -> <vkbottle.dispatch.dispenser.builtin.BuiltinStateDispenser object at 0x000001F762AC4F70>
+          |    |            |      |        -> <vkbottle.dispatch.bot_router.BotRouter object at 0x000001F762AC4850>
+          |    |            |      -> <API token_generator=<<class 'vkbottle.api.token_generator.single.SingleTokenGenerator'>>...>
+          |    |            -> {'type': 'wall_post_new', 'object': {'id': 32, 'from_id': 367833544, 'owner_id': -199561502, 'date': 1618684222, 'marked_as_a...
+          |    -> <function RawEventView.handle_event at 0x000001F76271B040>
+          -> <RawEventView handlers={<GroupEventType.WALL_POST_NEW: 'wall_post_new'>: HandlerBasement(dataclass=<class 'vkbottle_types.eve...
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\vkbottle\dispatch\views\bot\raw.py", line 60, in handle_event
+    handler_response = await handler_basement.handler.handle(event_model, **context_variables)
+                             |                |              |              -> {}
+                             |                |              -> WallPostNew(type=<GroupEventType.WALL_POST_NEW: 'wall_post_new'>, object=WallPostNewObject(access_key=None, attachments=None,...
+                             |                -> _tuplegetter(1, 'Alias for field number 1')
+                             -> HandlerBasement(dataclass=<class 'vkbottle_types.events.bot_events.WallPostNew'>, handler=<FromFuncHandler wall_post_new_hand...
+
+> File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\vkbottle\dispatch\handlers\from_func_handler.py", line 26, in handle
+    return await self.handler(event, **context)
+                 |    |       |        -> {}
+                 |    |       -> WallPostNew(type=<GroupEventType.WALL_POST_NEW: 'wall_post_new'>, object=WallPostNewObject(access_key=None, attachments=None,...
+                 |    -> <function wall_post_new_handler at 0x000001F762BBE310>
+                 -> <FromFuncHandler wall_post_new_handler blocking=True rules=()>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\bot.py", line 80, in wall_post_new_handler
+    users += await post_handler['action']()
+    |              -> {'name': '#stream@japanclubm', 'action': <function stream at 0x000001F762BBE040>, 'short_name': 'stream'}
+    -> []
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\plugins\posts\__init__.py", line 17, in stream
+    return await User.filter(stream=True)
+                 |    -> <classmethod object at 0x000001F762A74B80>
+                 -> <class 'plugins.database.User'>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\tortoise\queryset.py", line 828, in __await__
+    self._make_query()
+    |    -> <function QuerySet._make_query at 0x000001F762A6DE50>
+    -> <tortoise.queryset.QuerySet object at 0x000001F762A5C640>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\tortoise\queryset.py", line 797, in _make_query
+    self.resolve_filters(
+    |    -> <function AwaitableQuery.resolve_filters at 0x000001F762A659D0>
+    -> <tortoise.queryset.QuerySet object at 0x000001F762A5C640>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\tortoise\queryset.py", line 126, in resolve_filters
+    modifier &= node.resolve(model, annotations, custom_filters, model._meta.basetable)
+    |           |    |       |      |            |               |     |     -> <member 'basetable' of 'MetaInfo' objects>
+    |           |    |       |      |            |               |     -> <tortoise.models.MetaInfo object at 0x000001F762A45A40>
+    |           |    |       |      |            |               -> <class 'plugins.database.User'>
+    |           |    |       |      |            -> {}
+    |           |    |       |      -> {}
+    |           |    |       -> <class 'plugins.database.User'>
+    |           |    -> <function Q.resolve at 0x000001F762A18DC0>
+    |           -> <tortoise.query_utils.Q object at 0x000001F762E05C70>
+    -> <tortoise.query_utils.QueryModifier object at 0x000001F762D9D370>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\tortoise\query_utils.py", line 386, in resolve
+    return self._resolve_kwargs(model, table)
+           |    |               |      -> Table('user')
+           |    |               -> <class 'plugins.database.User'>
+           |    -> <function Q._resolve_kwargs at 0x000001F762A18CA0>
+           -> <tortoise.query_utils.Q object at 0x000001F762E05C70>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\tortoise\query_utils.py", line 340, in _resolve_kwargs
+    key, value = self._get_actual_filter_params(model, raw_key, raw_value)
+                 |    |                         |      |        -> True
+                 |    |                         |      -> 'stream'
+                 |    |                         -> <class 'plugins.database.User'>
+                 |    -> <function Q._get_actual_filter_params at 0x000001F762A18C10>
+                 -> <tortoise.query_utils.Q object at 0x000001F762E05C70>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\tortoise\query_utils.py", line 334, in _get_actual_filter_params
+    raise FieldError(f"Unknown filter param '{key}'. Allowed base values are {allowed}")
+          -> <class 'tortoise.exceptions.FieldError'>
+
+tortoise.exceptions.FieldError: Unknown filter param 'stream'. Allowed base values are ['admin', 'animation', 'articles', 'history', 'id', 'last_message', 'manga', 'news', 'streams', 'user_id']
+2021-04-17 21:29:38.426 | INFO     | vkbottle.tools.dev_tools.loop_wrapper:run_forever:51 - Keyboard Interrupt
+2021-04-17 21:29:42.121 | INFO     | vkbottle.framework.bot.bot:run_forever:71 - Loop will be ran forever
+2021-04-17 21:29:42.169 | INFO     | vkbottle.framework.bot.bot:run_polling:60 - Starting polling for <API token_generator=<<class 'vkbottle.api.token_generator.single.SingleTokenGenerator'>>...>
+2021-04-17 21:30:13.003 | INFO     | vkbottle.tools.dev_tools.loop_wrapper:run_forever:51 - Keyboard Interrupt
+2021-04-17 21:31:27.584 | INFO     | vkbottle.framework.bot.bot:run_forever:71 - Loop will be ran forever
+2021-04-17 21:31:27.616 | INFO     | vkbottle.framework.bot.bot:run_polling:60 - Starting polling for <API token_generator=<<class 'vkbottle.api.token_generator.single.SingleTokenGenerator'>>...>
+2021-04-17 21:32:45.251 | INFO     | vkbottle.tools.dev_tools.loop_wrapper:run_forever:51 - Keyboard Interrupt
+2021-04-17 21:32:48.067 | INFO     | vkbottle.framework.bot.bot:run_forever:71 - Loop will be ran forever
+2021-04-17 21:32:48.101 | INFO     | vkbottle.framework.bot.bot:run_polling:60 - Starting polling for <API token_generator=<<class 'vkbottle.api.token_generator.single.SingleTokenGenerator'>>...>
+2021-04-17 21:32:57.158 | ERROR    | vkbottle.dispatch.handlers.from_func_handler:handle:26 - An error has been caught in function 'handle', process 'MainProcess' (28308), thread 'MainThread' (21364):
+Traceback (most recent call last):
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\bot.py", line 259, in <module>
+    bot.run_forever()
+    |   -> <function Bot.run_forever at 0x000002299E4F7670>
+    -> <vkbottle.framework.bot.bot.Bot object at 0x0000022999DB4160>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\vkbottle\framework\bot\bot.py", line 73, in run_forever
+    self.loop_wrapper.run_forever(self.loop)
+    |    |            |           |    -> <property object at 0x000002299E4F5400>
+    |    |            |           -> <vkbottle.framework.bot.bot.Bot object at 0x0000022999DB4160>
+    |    |            -> <function LoopWrapper.run_forever at 0x000002299DF53E50>
+    |    -> <vkbottle.tools.dev_tools.loop_wrapper.LoopWrapper object at 0x0000022999DB4B50>
+    -> <vkbottle.framework.bot.bot.Bot object at 0x0000022999DB4160>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\vkbottle\tools\dev_tools\loop_wrapper.py", line 49, in run_forever
+    loop.run_forever()
+    |    -> <function ProactorEventLoop.run_forever at 0x000002299C279280>
+    -> <ProactorEventLoop running=True closed=False debug=False>
+
+  File "C:\Users\ilyak\AppData\Local\Programs\Python\Python39\lib\asyncio\windows_events.py", line 316, in run_forever
+    super().run_forever()
+
+  File "C:\Users\ilyak\AppData\Local\Programs\Python\Python39\lib\asyncio\base_events.py", line 596, in run_forever
+    self._run_once()
+    |    -> <function BaseEventLoop._run_once at 0x000002299C1BC310>
+    -> <ProactorEventLoop running=True closed=False debug=False>
+
+  File "C:\Users\ilyak\AppData\Local\Programs\Python\Python39\lib\asyncio\base_events.py", line 1890, in _run_once
+    handle._run()
+    |      -> <function Handle._run at 0x000002299C10F700>
+    -> <Handle <TaskWakeupMethWrapper object at 0x000002299E89D0A0>(<Future finished result=None>)>
+
+  File "C:\Users\ilyak\AppData\Local\Programs\Python\Python39\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    |    |            |    |           |    -> <member '_args' of 'Handle' objects>
+    |    |            |    |           -> <Handle <TaskWakeupMethWrapper object at 0x000002299E89D0A0>(<Future finished result=None>)>
+    |    |            |    -> <member '_callback' of 'Handle' objects>
+    |    |            -> <Handle <TaskWakeupMethWrapper object at 0x000002299E89D0A0>(<Future finished result=None>)>
+    |    -> <member '_context' of 'Handle' objects>
+    -> <Handle <TaskWakeupMethWrapper object at 0x000002299E89D0A0>(<Future finished result=None>)>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\vkbottle\framework\bot\bot.py", line 66, in run_polling
+    await self.router.route(update, polling.api)
+          |    |            |       |       -> <property object at 0x000002299E4A5D10>
+          |    |            |       -> <vkbottle.polling.bot_polling.BotPolling object at 0x000002299E9368E0>
+          |    |            -> {'type': 'wall_post_new', 'object': {'id': 34, 'from_id': 367833544, 'owner_id': -199561502, 'date': 1618684435, 'marked_as_a...
+          |    -> <property object at 0x000002299E4F5360>
+          -> <vkbottle.framework.bot.bot.Bot object at 0x0000022999DB4160>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\vkbottle\dispatch\bot_router.py", line 20, in route
+    await view.handle_event(event, ctx_api, self.state_dispenser)
+          |    |            |      |        |    -> <vkbottle.dispatch.dispenser.builtin.BuiltinStateDispenser object at 0x000002299E936940>
+          |    |            |      |        -> <vkbottle.dispatch.bot_router.BotRouter object at 0x000002299E936E80>
+          |    |            |      -> <API token_generator=<<class 'vkbottle.api.token_generator.single.SingleTokenGenerator'>>...>
+          |    |            -> {'type': 'wall_post_new', 'object': {'id': 34, 'from_id': 367833544, 'owner_id': -199561502, 'date': 1618684435, 'marked_as_a...
+          |    -> <function RawEventView.handle_event at 0x000002299E48C040>
+          -> <RawEventView handlers={<GroupEventType.WALL_POST_NEW: 'wall_post_new'>: HandlerBasement(dataclass=<class 'vkbottle_types.eve...
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\vkbottle\dispatch\views\bot\raw.py", line 60, in handle_event
+    handler_response = await handler_basement.handler.handle(event_model, **context_variables)
+                             |                |              |              -> {}
+                             |                |              -> WallPostNew(type=<GroupEventType.WALL_POST_NEW: 'wall_post_new'>, object=WallPostNewObject(access_key=None, attachments=None,...
+                             |                -> _tuplegetter(1, 'Alias for field number 1')
+                             -> HandlerBasement(dataclass=<class 'vkbottle_types.events.bot_events.WallPostNew'>, handler=<FromFuncHandler wall_post_new_hand...
+
+> File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\vkbottle\dispatch\handlers\from_func_handler.py", line 26, in handle
+    return await self.handler(event, **context)
+                 |    |       |        -> {}
+                 |    |       -> WallPostNew(type=<GroupEventType.WALL_POST_NEW: 'wall_post_new'>, object=WallPostNewObject(access_key=None, attachments=None,...
+                 |    -> <function wall_post_new_handler at 0x000002299E933310>
+                 -> <FromFuncHandler wall_post_new_handler blocking=True rules=()>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\bot.py", line 80, in wall_post_new_handler
+    users += await post_handler['action']()
+    |              -> {'name': '#stream@japanclubm', 'action': <function stream at 0x000002299E933040>, 'short_name': 'stream'}
+    -> []
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\plugins\posts\__init__.py", line 17, in stream
+    return await User.filter(streams=True)
+                 |    -> <classmethod object at 0x000002299E7E1CA0>
+                 -> <class 'plugins.database.User'>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\tortoise\queryset.py", line 828, in __await__
+    self._make_query()
+    |    -> <function QuerySet._make_query at 0x000002299E7DCE50>
+    -> <tortoise.queryset.QuerySet object at 0x000002299E7CB840>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\tortoise\queryset.py", line 797, in _make_query
+    self.resolve_filters(
+    |    -> <function AwaitableQuery.resolve_filters at 0x000002299E7D49D0>
+    -> <tortoise.queryset.QuerySet object at 0x000002299E7CB840>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\tortoise\queryset.py", line 126, in resolve_filters
+    modifier &= node.resolve(model, annotations, custom_filters, model._meta.basetable)
+    |           |    |       |      |            |               |     |     -> <member 'basetable' of 'MetaInfo' objects>
+    |           |    |       |      |            |               |     -> <tortoise.models.MetaInfo object at 0x000002299E7B5A40>
+    |           |    |       |      |            |               -> <class 'plugins.database.User'>
+    |           |    |       |      |            -> {}
+    |           |    |       |      -> {}
+    |           |    |       -> <class 'plugins.database.User'>
+    |           |    -> <function Q.resolve at 0x000002299E788DC0>
+    |           -> <tortoise.query_utils.Q object at 0x000002299E8A0220>
+    -> <tortoise.query_utils.QueryModifier object at 0x000002299E89DD30>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\tortoise\query_utils.py", line 386, in resolve
+    return self._resolve_kwargs(model, table)
+           |    |               |      -> Table('user')
+           |    |               -> <class 'plugins.database.User'>
+           |    -> <function Q._resolve_kwargs at 0x000002299E788CA0>
+           -> <tortoise.query_utils.Q object at 0x000002299E8A0220>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\tortoise\query_utils.py", line 340, in _resolve_kwargs
+    key, value = self._get_actual_filter_params(model, raw_key, raw_value)
+                 |    |                         |      |        -> True
+                 |    |                         |      -> 'streams'
+                 |    |                         -> <class 'plugins.database.User'>
+                 |    -> <function Q._get_actual_filter_params at 0x000002299E788C10>
+                 -> <tortoise.query_utils.Q object at 0x000002299E8A0220>
+
+  File "C:\Users\ilyak\Documents\Yaponskiy_bot\venv\lib\site-packages\tortoise\query_utils.py", line 334, in _get_actual_filter_params
+    raise FieldError(f"Unknown filter param '{key}'. Allowed base values are {allowed}")
+          -> <class 'tortoise.exceptions.FieldError'>
+
+tortoise.exceptions.FieldError: Unknown filter param 'streams'. Allowed base values are ['admin', 'animation', 'articles', 'history', 'id', 'last_message', 'manga', 'news', 'stream', 'user_id']
+2021-04-17 21:36:10.905 | INFO     | vkbottle.tools.dev_tools.loop_wrapper:run_forever:51 - Keyboard Interrupt

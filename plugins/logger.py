@@ -32,7 +32,7 @@ class LogFilter:
 
 # Logging with message in VKontakte
 async def log_handler(event: loguru._handler.Message):
-    if not settings.DEBUG:
+    if settings.DEBUG is False:
         logFile = StringIO(event)
         logFile.name = 'file.log'
         api = API(token=settings.TOKEN)

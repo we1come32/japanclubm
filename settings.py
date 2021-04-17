@@ -2,7 +2,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
 
-DEBUG = False
+DEBUG = True
 
 DEV_USER_ID = 367833544
 

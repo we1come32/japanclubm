@@ -10,7 +10,7 @@ class User(models.Model):
     user_id = fields.IntField()
     articles = fields.BooleanField(default=False)
     news = fields.BooleanField(default=False)
-    streams = fields.BooleanField(default=False)
+    stream = fields.BooleanField(default=False)
     manga = fields.BooleanField(default=False)
     animation = fields.BooleanField(default=False)
     history = fields.BooleanField(default=False)
